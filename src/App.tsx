@@ -1,13 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Home} from "./page/home";
 
 function App() {
-  return (
-    <div className="App">
-     <h1 className="text-3xl font-bold underline bg-sky-500 hover:bg-sky-700">hello</h1>
-    </div>
-  );
+    return (
+        <div className="App">
+            <main>
+                <Home/>
+            </main>
+        </div>
+    );
 }
 
 export default App;
