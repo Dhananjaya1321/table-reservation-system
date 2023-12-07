@@ -1,5 +1,4 @@
 import React from 'react';
-import "./style.css";
 import image from "../../assets/image/restaurant-hall-with-lots-table.jpg";
 
 export function Home() {
