@@ -3,7 +3,7 @@ import image from "../../assets/image/restaurant-hall-with-lots-table.jpg";
 
 export function Home() {
     return (
-        <section className="relative">
+        <section className="relative" style={{height:"500px"}}>
             <div id="home-img" className="relative h-full"
                  style={{background: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center"}}/>
             <div className="bg-gray-950 opacity-0 w-2/4 h-full absolute top-0 sm:opacity-25"/>

@@ -1,0 +1,15 @@
+#search-bar > div  {
+   background-color: white;
+}
+
+#search-bar > div > input:nth-child(1) {
+    margin: 0 10px 0 20px;
+}
+
+#search-bar > div > input:nth-child(2) {
+    margin: 0 10px 0 10px;
+}
+
+#search-bar > div > button {
+    margin: 0 20px 0 10px;
+}
