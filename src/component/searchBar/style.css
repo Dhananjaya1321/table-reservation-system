@@ -1,5 +1,5 @@
-#search-bar > div  {
-   background-color: white;
+#search-bar > div {
+    background-color: white;
 }
 
 #search-bar > div > input:nth-child(1) {
@@ -12,4 +12,16 @@
 
 #search-bar > div > button {
     margin: 0 20px 0 10px;
+}
+
+@media all and (max-width: 639px) {
+    #search-bar > div {
+        height: max-content;
+        padding: 20px;
+        gap: 10px;
+    }
+
+    #search-bar > div > button, #search-bar > div > input {
+        margin: 0 !important;
+    }
 }
