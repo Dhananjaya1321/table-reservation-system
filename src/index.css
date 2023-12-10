@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
 .flex {
     display: flex;
     align-items: center;
@@ -18,4 +19,4 @@
 
 .f-col {
     flex-direction: column;
-}
+}*/
