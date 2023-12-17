@@ -9,7 +9,7 @@ function App() {
     return (
         <div className="App">
             <NavBar/>
-            <main className="relative top-[50px]">
+            <main className="relative top-[50px] bg-gray-100">
                 <Home/>
                 <SearchBar/>
                 <Tables/>
