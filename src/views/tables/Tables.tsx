@@ -3,7 +3,11 @@ import {Table} from "../table/Table";
 
 export function Tables() {
     return (
-        <section id="tables-section" className="w-full flex justify-center">
+        <section id="tables-section" className="w-full flex justify-center flex-col items-center">
+            <div className="w-[80%] h-[30px] flex flex-row flex-wrap gap-[25px]">
+                <div className="flex flex-row gap-[5px] items-center"><div className="w-[25px] h-[25px] bg-emerald-400 rounded-[5px] shadow-xl"/><p>Available</p></div>
+                <div className="flex flex-row gap-[5px] items-center"><div className="w-[25px] h-[25px] bg-red-400 rounded-[5px] shadow-xl"/><p>Not Available</p></div>
+            </div>
             <section className="w-[80%] h-max flex flex-wrap flex-row gap-5 py-3 justify-center">
                 <Table table_id={"1"} table_number={"1"} chair_count={5} status={"reserved"}/>
                 <Table table_id={"2"} table_number={"2"} chair_count={5} status={""}/>
