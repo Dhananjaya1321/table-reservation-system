@@ -1,18 +1,6 @@
 import React from "react";
 
 export function Table({table_id, table_number, chair_count, status}: Props) {
-    const message = () => {
-        if (status === "reserved") {
-            return <h1 className="text-white">The table is reserved</h1>;
-        } else {
-            return (
-                <>
-                    <h1 className="text-white">Table Number : {table_number}</h1>
-                    <h1 className="text-white">Chair count : {chair_count}</h1>
-                </>
-            );
-        }
-    };
     const table = () => {
         if (status === "reserved") {
             return <div className="w-[150px] h-[150px] rounded-[100%] bg-red-400 z-10 shadow-2xl"/>;
@@ -22,22 +10,22 @@ export function Table({table_id, table_number, chair_count, status}: Props) {
     };
 
     return (
-        <div className="w-max h-max relative">
+        <div className="w-max h-max relative flex items-center justify-center">
             <div className="w-[250px] h-[250px] flex items-center justify-center">
                 {table()}
                 <div className="w-[156px] h-[50px] bg-black absolute rounded-[8px] rotate-45"/>
                 <div className="w-[50px] h-[156px] bg-black absolute rounded-[8px] rotate-45"/>
             </div>
             <div
-                className="absolute w-[250px] h-[250px] top-0 rounded-[20px] flex justify-center text-center items-center z-20">
+                className="absolute w-[250px] h-[250px] top-0 left-0 right-0 bottom-0 m-auto rounded-[20px] flex justify-center text-center items-center z-20">
                 <h1 className="text-[32px]">{table_number}</h1>
             </div>
             <div
-                id={table_id}
-                className="text-3xl flex-col opacity-0 hover:bg-black hover:opacity-75 hover:drop-shadow-md absolute
-                w-[250px] h-[250px] top-0 rounded-[20px] flex justify-center text-center items-center z-30"
-            >
-                {message()}
+                id={table_id}/*hover:bg-black */
+                className="text-3xl flex-col opacity-0 hover:opacity-100 hover:drop-shadow-md absolute
+                w-[150px] h-[150px] rounded-[20px] flex justify-center text-center items-center z-30
+                top-0 left-0 right-0 bottom-0 m-auto">
+                <button className="w-[100px] h-[40px] bg-amber-400 text-xl rounded-[5px]">VIEW</button>
             </div>
         </div>
     );
