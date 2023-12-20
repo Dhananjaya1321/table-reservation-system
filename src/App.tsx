@@ -4,7 +4,6 @@ import {Home} from "./views/home";
 import {SearchBar} from "./views/searchBar";
 import {NavBar} from "./views/navBar/NavBar";
 import {Tables} from "./views/tables/Tables";
-import {PopUpForm} from "./views/popup/PopUpForm";
 
 function App() {
     return (
@@ -15,7 +14,6 @@ function App() {
                 <SearchBar/>
                 <Tables/>
             </main>
-            <PopUpForm/>
         </div>
     );
 }
