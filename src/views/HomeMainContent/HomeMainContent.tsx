@@ -3,6 +3,8 @@ import {NavBar} from "../NavBar/NavBar";
 import {Home} from "../Home/Home";
 import {SearchBar} from "../SearchBar/SearchBar";
 import {Tables} from "../Tables/Tables";
+import {About} from "../About/About";
+import {Feedback} from "../Feedback/Feedback";
 
 export function HomeMainContent() {
     return (
@@ -12,6 +14,8 @@ export function HomeMainContent() {
                 <Home/>
                 <SearchBar/>
                 <Tables/>
+                <About/>
+                <Feedback/>
             </main>
         </>
     );
