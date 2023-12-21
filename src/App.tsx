@@ -1,23 +1,20 @@
 import React from 'react';
 import './App.css';
-import {Home} from "./views/Home/Home";
-import {SearchBar} from "./views/SearchBar/SearchBar";
-import {NavBar} from "./views/NavBar/NavBar";
-import {Tables} from "./views/Tables/Tables";
 import {SignIn} from "./views/SignIn/SignIn";
 import {Signup} from "./views/Signup/Signup";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {HomeMainContent} from "./views/HomeMainContent/HomeMainContent";
 
 function App() {
     return (
         <div className="App">
-           {/* <NavBar/>
-            <main className="relative top-[50px] bg-gray-100">
-                <Home/>
-                <SearchBar/>
-                <Tables/>
-            </main>*/}
-            {/*<SignIn/>*/}
-            <Signup/>
+            <BrowserRouter>
+                <Routes>
+                    <Route path={"/*"} Component={HomeMainContent}/>
+                    <Route path={"/signin"} Component={SignIn}/>
+                    <Route path={"/signup"} Component={Signup}/>
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
