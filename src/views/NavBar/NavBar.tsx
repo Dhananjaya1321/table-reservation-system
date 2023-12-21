@@ -1,5 +1,7 @@
 import {Component} from "react";
 import logo from "../../assets/image/logo.png";
+import Button from "@mui/material/Button";
+import {Link} from "react-router-dom";
 export class NavBar extends Component {
     render() {
         return (
@@ -13,6 +15,14 @@ export class NavBar extends Component {
                         <li className="inline mx-5 text-white">About</li>
                         <li className="inline mx-5 text-white">Tables</li>
                         <li className="inline mx-5 text-white">Contact</li>
+                        <li className="inline mx-5 text-white">
+                            <Button
+                                variant="contained"
+                                color="info"
+                            >
+                                <Link to="/signin">Sign In</Link>
+                            </Button>
+                        </li>
                     </menu>
                 </div>
             </header>
