@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {PopUpForm} from "../popup/PopUpForm";
+import {PopUpForm} from "../PopUpForm/PopUpForm";
 
 export function Table({table_id, table_number, chair_count, status}: Props) {
     const [isPopupOpen, setPopupOpen] = useState(false);

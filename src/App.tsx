@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import {Home} from "./views/home";
-import {SearchBar} from "./views/searchBar";
-import {NavBar} from "./views/navBar/NavBar";
-import {Tables} from "./views/tables/Tables";
+import {Home} from "./views/Home/Home";
+import {SearchBar} from "./views/SearchBar/SearchBar";
+import {NavBar} from "./views/NavBar/NavBar";
+import {Tables} from "./views/Tables/Tables";
 import {SignIn} from "./views/SignIn/SignIn";
 import {Signup} from "./views/Signup/Signup";
 
