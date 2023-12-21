@@ -5,6 +5,7 @@ import {SearchBar} from "./views/searchBar";
 import {NavBar} from "./views/navBar/NavBar";
 import {Tables} from "./views/tables/Tables";
 import {SignIn} from "./views/SignIn/SignIn";
+import {Signup} from "./views/Signup/Signup";
 
 function App() {
     return (
@@ -15,7 +16,8 @@ function App() {
                 <SearchBar/>
                 <Tables/>
             </main>*/}
-            <SignIn/>
+            {/*<SignIn/>*/}
+            <Signup/>
         </div>
     );
 }
