@@ -5,6 +5,7 @@ import {SearchBar} from "../SearchBar/SearchBar";
 import {Tables} from "../Tables/Tables";
 import {About} from "../About/About";
 import {Feedback} from "../Feedback/Feedback";
+import {Contact} from "../Contact/Contact";
 
 export function HomeMainContent() {
     return (
@@ -16,6 +17,7 @@ export function HomeMainContent() {
                 <Tables/>
                 <About/>
                 <Feedback/>
+                <Contact/>
             </main>
         </>
     );
