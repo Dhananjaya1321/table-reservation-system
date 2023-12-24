@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 
 export function Contact() {
     return (
-        <section id="contact-section" className="w-full h-max flex flex-col items-center justify-center mt-10">
+        <section id="contact-section" className="w-full h-max flex flex-col items-center justify-center mt-10 pb-10">
             <div className="gap-8 w-full flex sm:gap-0 flex-col sm:flex-row items-center justify-center">
                 <div
                     className="w-[90%] rounded-3xl sm:w-[300px] md:w-[450px] lg:w-[500px] h-[400px] sm:rounded-l-[20px] sm:rounded-r-none flex justify-center items-center shadow-2xl bg-white">

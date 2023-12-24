@@ -6,6 +6,7 @@ import {Tables} from "../Tables/Tables";
 import {About} from "../About/About";
 import {Feedback} from "../Feedback/Feedback";
 import {Contact} from "../Contact/Contact";
+import {Footer} from "../Footer/Footer";
 
 export function HomeMainContent() {
     return (
@@ -19,6 +20,7 @@ export function HomeMainContent() {
                 <Feedback/>
                 <Contact/>
             </main>
+            <Footer/>
         </>
     );
 }
