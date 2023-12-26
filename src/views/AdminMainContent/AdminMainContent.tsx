@@ -2,6 +2,7 @@ import {AdminNavBar} from "../AdminNavBar/AdminNavBar";
 import {Route, Routes} from "react-router-dom";
 import React from "react";
 import {Dashboard} from "../Dashboard/Dashboard";
+import {ManageTables} from "../ManageTables/ManageTables";
 
 export function AdminMainContent() {
     return (
@@ -11,11 +12,11 @@ export function AdminMainContent() {
                     <AdminNavBar/>
                 </section>
                 <section className="w-full flex justify-center items-center">
-                    <Dashboard/>
+                    {/*<Dashboard/>*/}
+                    <ManageTables/>
                 </section>
 
 
-                {/*left eken 50px thiyala wada karanna*/}
 
                 {/*<Routes>*/}
                 {/*    <Route path={"/dashboard"} Component={Dashboard}/>*/}
