@@ -1,12 +1,20 @@
 import {AdminNavBar} from "../AdminNavBar/AdminNavBar";
 import {Route, Routes} from "react-router-dom";
 import React from "react";
+import {Dashboard} from "../Dashboard/Dashboard";
 
 export function AdminMainContent() {
     return (
         <>
-            <AdminNavBar/>
-            <main className="h-screen w-full bg-blue-200">
+            <main className="h-screen w-full flex flex-row">
+                <section id="nav-bar-section" className="w-[50px]">
+                    <AdminNavBar/>
+                </section>
+                <section className="w-full flex justify-center items-center">
+                    <Dashboard/>
+                </section>
+
+
                 {/*left eken 50px thiyala wada karanna*/}
 
                 {/*<Routes>*/}
