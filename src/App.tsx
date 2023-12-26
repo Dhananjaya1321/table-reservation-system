@@ -4,7 +4,7 @@ import {SignIn} from "./views/SignIn/SignIn";
 import {Signup} from "./views/Signup/Signup";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {HomeMainContent} from "./views/HomeMainContent/HomeMainContent";
-import {AdminNavBar} from "./views/AdminNavBar/AdminNavBar";
+import {AdminMainContent} from "./views/AdminMainContent/AdminMainContent";
 
 function App() {
     return (
@@ -14,7 +14,7 @@ function App() {
                     <Route path={"/*"} Component={HomeMainContent}/>
                     <Route path={"/signin"} Component={SignIn}/>
                     <Route path={"/signup"} Component={Signup}/>
-                    <Route path={"/admin"} Component={AdminNavBar}/>
+                    <Route path={"/admin"} Component={AdminMainContent}/>
                 </Routes>
             </BrowserRouter>
         </div>
