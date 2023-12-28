@@ -1,5 +1,4 @@
 import React from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLocationDot, faPhone} from "@fortawesome/free-solid-svg-icons";
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";

@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#chart-div>div{
+    /*width: 500px;*/
 }
-
-.wrap {
-    flex-wrap: wrap;
-}
-
-.f-row {
-    flex-direction: row;
-}
-
-.f-col {
-    flex-direction: column;
-}*/
