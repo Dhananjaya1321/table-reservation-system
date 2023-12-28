@@ -5,6 +5,8 @@ import {Signup} from "./views/Signup/Signup";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {HomeMainContent} from "./views/HomeMainContent/HomeMainContent";
 import {AdminMainContent} from "./views/AdminMainContent/AdminMainContent";
+import {Dashboard} from "./views/Dashboard/Dashboard";
+import {ManageTables} from "./views/ManageTables/ManageTables";
 
 function App() {
     return (
@@ -14,7 +16,10 @@ function App() {
                     <Route path={"/*"} Component={HomeMainContent}/>
                     <Route path={"/signin"} Component={SignIn}/>
                     <Route path={"/signup"} Component={Signup}/>
-                    <Route path={"/admin"} Component={AdminMainContent}/>
+                    <Route path={"/admin/*"} Component={AdminMainContent}>
+                        <Route path="dashboard" element={<Dashboard />} />
+                        <Route path="manage/tables" element={<ManageTables />} />
+                    </Route>
                 </Routes>
             </BrowserRouter>
         </div>

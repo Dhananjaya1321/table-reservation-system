@@ -1,8 +1,7 @@
 import {AdminNavBar} from "../AdminNavBar/AdminNavBar";
-import {Route, Routes} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import React from "react";
-import {Dashboard} from "../Dashboard/Dashboard";
-import {ManageTables} from "../ManageTables/ManageTables";
+
 
 export function AdminMainContent() {
     return (
@@ -12,17 +11,8 @@ export function AdminMainContent() {
                     <AdminNavBar/>
                 </section>
                 <section className="w-full flex justify-center items-center">
-                    {/*<Dashboard/>*/}
-                    <ManageTables/>
+                    <Outlet/>
                 </section>
-
-
-
-                {/*<Routes>*/}
-                {/*    <Route path={"/dashboard"} Component={Dashboard}/>*/}
-                {/*    <Route path={"/manage/tables"} Component={ManageTables}/>*/}
-                {/*    <Route path={"/manage/booking"} Component={ManageBooking}/>*/}
-                {/*</Routes>*/}
             </main>
         </>
     );

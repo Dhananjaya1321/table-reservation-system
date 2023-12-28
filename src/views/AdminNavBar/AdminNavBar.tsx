@@ -30,7 +30,7 @@ export function AdminNavBar() {
             </button>
             <nav id="admin-nav-bar" className="relative left-[-250px] top-0 w-[300px]  h-screen bg-gray-600 z-40">
                 <div className="relative top-[50px] flex flex-col gap-1 h-max">
-                    <Link to="/dashboard">
+                    <Link to="/admin/dashboard">
                         <Button
                             className="w-[100%] h-[52px] text-3xl"
                             style={{backgroundColor: "#738091"}}
@@ -38,7 +38,7 @@ export function AdminNavBar() {
                         >Dashboard</Button>
                     </Link>
 
-                    <Link to="/manage/tables">
+                    <Link to="/admin/manage/tables">
                         <Button
                             className="w-[100%] h-[52px] text-3xl"
                             style={{backgroundColor: "#738091"}}
@@ -46,7 +46,7 @@ export function AdminNavBar() {
                         >Manage Tables</Button>
                     </Link>
 
-                    <Link to="/manage/booking">
+                    <Link to="/admin/manage/booking">
                         <Button
                             className="w-[100%] h-[52px] text-3xl"
                             style={{backgroundColor: "#738091"}}
