@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEnvelope, faLocationDot, faPhone} from "@fortawesome/free-solid-svg-icons";
 import {TextField} from "@mui/material";
 import Button from "@mui/material/Button";
+import {ContactDetail} from "../../component/ContactDetail/ContactDetail";
 
 export function Contact() {
     return (
@@ -43,50 +44,10 @@ export function Contact() {
                  items-center">
                     <div className="w-[90%] flex flex-col justify-center gap-8">
                         <h1 className="text-3xl text-center sm:text-start">Contact Us</h1>
-                        <div className="flex flex-row gap-2 items-center">
-                            <div
-                                className="min-w-[45px] h-[45px] bg-blue-100 rounded-[100%] flex flex-col justify-center">
-                                <FontAwesomeIcon className="text-blue-600 text-2xl" icon={faLocationDot}/>
-                            </div>
-                            <div>
-                                <p className="text-xl">Location</p>
-                                <p>Galle, Sri Lanka</p>
-                            </div>
-                        </div>
-                        {/*address*/}
-                        <div className="flex flex-row gap-2 items-center">
-                            <div
-                                className="min-w-[45px] h-[45px] bg-blue-100 rounded-[100%] flex flex-col justify-center">
-                                <FontAwesomeIcon className="text-blue-600 text-2xl" icon={faPhone}/>
-                            </div>
-                            <div>
-                                <p className="text-xl">Phone</p>
-                                <p>076 715 1321</p>
-                            </div>
-                        </div>
-                        {/*phone*/}
-                        <div className="flex flex-row gap-2 items-center">
-                            <div
-                                className="min-w-[45px] h-[45px] bg-blue-100 rounded-[100%] flex flex-col justify-center">
-                                <FontAwesomeIcon className="text-blue-600 text-2xl" icon={faPhone}/>
-                            </div>
-                            <div>
-                                <p className="text-xl">Phone</p>
-                                <p>076 715 1321</p>
-                            </div>
-                        </div>
-                        {/*phone*/}
-                        <div className="flex flex-row gap-2 items-center">
-                            <div
-                                className="min-w-[45px] h-[45px] bg-blue-100 rounded-[100%] flex flex-col justify-center">
-                                <FontAwesomeIcon className="text-blue-600 text-2xl" icon={faEnvelope}/>
-                            </div>
-                            <div>
-                                <p className="text-xl">Email</p>
-                                <p className="text-[15px]">blackisurudananjaya@gmail.com</p>
-                            </div>
-                        </div>
-                        {/*email*/}
+                        <ContactDetail icon={faLocationDot} topic={"Location"} detail={"Galle, Sri Lanka"}/>
+                        <ContactDetail icon={faPhone} topic={"Phone"} detail={"076 715 1321"}/>
+                        <ContactDetail icon={faPhone} topic={"Phone"} detail={"076 715 1321"}/>
+                        <ContactDetail icon={faEnvelope} topic={"Email"} detail={"blackisurudananjaya@gmail.com"}/>
                     </div>
                 </div>
             </div>
