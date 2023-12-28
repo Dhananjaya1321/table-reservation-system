@@ -61,7 +61,6 @@ export function AdminNavBar() {
                             style={{backgroundColor: "#dd0909"}}
                         >Logout</Button>
                     </Link>
-
                 </div>
             </nav>
         </>
