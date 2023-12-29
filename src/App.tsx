@@ -7,6 +7,7 @@ import {HomeMainContent} from "./views/HomeMainContent/HomeMainContent";
 import {AdminMainContent} from "./views/AdminMainContent/AdminMainContent";
 import {Dashboard} from "./views/Dashboard/Dashboard";
 import {ManageTables} from "./views/ManageTables/ManageTables";
+import {ManageBooking} from "./views/ManageBooking/ManageBooking";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     <Route path={"/admin/*"} Component={AdminMainContent}>
                         <Route path="dashboard" element={<Dashboard />} />
                         <Route path="manage/tables" element={<ManageTables />} />
+                        <Route path="manage/booking" element={<ManageBooking />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
