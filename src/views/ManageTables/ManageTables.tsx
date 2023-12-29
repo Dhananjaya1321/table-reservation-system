@@ -15,7 +15,7 @@ import {Form} from "../../component/Form/Form";
 export function ManageTables() {
     return (
         <section className="absolute left-[50px] right-0 flex flex-col justify-center items-center h-max gap-[25px]">
-            <Form classes={"w-[90%] md:w-[60%] mt-5 flex justify-center items-center flex-wrap flex-row gap-[25px] p-[20px] rounded-2xl drop-shadow-md bg-white"}>
+            <Form classes={"w-[90%] mt-5 flex justify-center items-center flex-wrap flex-row gap-[25px] p-[20px] rounded-2xl drop-shadow-md bg-white"}>
                 <>
                     <TextField
                         className="w-[200px]"
@@ -39,7 +39,7 @@ export function ManageTables() {
                     </Button>
                 </>
             </Form>
-            <div className="w-[90%] md:w-[60%] ">
+            <div className="w-[90%]">
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
