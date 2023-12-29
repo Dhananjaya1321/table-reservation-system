@@ -10,7 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCircleMinus, faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export function ManageBooking() {
     return (
