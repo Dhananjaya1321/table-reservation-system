@@ -1,9 +1,22 @@
 import {TextField} from "@mui/material";
-import React from "react";
+import React, {useState} from "react";
 import Button from "@mui/material/Button";
 import {Link} from "react-router-dom";
 
 export function Signup() {
+    let [email, setEmail] = useState('');
+    let [password, setPassword] = useState('');
+    let handleEmailChange = (event: any) => {
+        setEmail(event.target.value);
+    };
+
+    let handlePasswordChange = (event: any) => {
+        setPassword(event.target.value);
+    };
+    let handleSubmit = () => {
+        console.log(email, password);
+
+    };
     return (
         <section className="w-[100%] h-[100vh] flex flex-col items-center justify-center bg-gray-100">
             <div
@@ -18,6 +31,8 @@ export function Signup() {
                         label="Email"
                         type="email"
                         variant="outlined"
+                        value={email}
+                        onChange={handleEmailChange}
                     />
                     <TextField
                         className="w-[100%] sm:w-[80%]"
@@ -25,12 +40,15 @@ export function Signup() {
                         label="Password"
                         type="password"
                         variant="outlined"
+                        value={password}
+                        onChange={handlePasswordChange}
                     />
                     <Link to="/" className="w-[100%] sm:w-[80%] h-[52px]">
                         <Button
                             className="w-[100%] h-[52px] text-3xl"
                             variant="contained"
                             color="info"
+                            onClick={handleSubmit}
                         >Sign Up</Button>
                     </Link>
 
