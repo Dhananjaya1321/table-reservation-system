@@ -13,7 +13,7 @@ router.get("/user/count",function (req, res) {
 
 /*============================== search user ==============================*/
 router.get("/search/user",function (req, res) {
-    res.send("search user");
+    res.send("search user ");
 })
 
 module.exports = router;
