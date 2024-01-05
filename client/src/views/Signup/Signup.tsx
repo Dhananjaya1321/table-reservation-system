@@ -2,8 +2,12 @@ import {TextField} from "@mui/material";
 import React, {useState} from "react";
 import Button from "@mui/material/Button";
 import {Link} from "react-router-dom";
+import axios from "axios";
+import {wait} from "@testing-library/user-event/dist/utils";
 
 export function Signup() {
+    let api = axios.create({baseURL: "http://localhost:4000"});
+
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
     let handleEmailChange = (event: any) => {
@@ -15,6 +19,18 @@ export function Signup() {
     };
     let handleSubmit = () => {
         console.log(email, password);
+        try {
+             api.post("/users/save/user", {
+                email: email,
+                password: password
+            }).then((res: { data: any }) => {
+                alert(res.data);
+            }).catch((error: any) => {
+                console.error(error)
+            })
+        } catch (e) {
+            console.error(e)
+        }
 
     };
     return (
