@@ -1,12 +1,12 @@
 import {TextField} from "@mui/material";
 import React, {useState} from "react";
 import Button from "@mui/material/Button";
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import axios from "axios";
-import {wait} from "@testing-library/user-event/dist/utils";
 
 export function Signup() {
-    let api = axios.create({baseURL: "http://localhost:4000"});
+    let api=axios.create({baseURL:"https://localhost:4000"});
+    let navigate = useNavigate();
 
     let [email, setEmail] = useState('');
     let [password, setPassword] = useState('');
@@ -17,21 +17,22 @@ export function Signup() {
     let handlePasswordChange = (event: any) => {
         setPassword(event.target.value);
     };
-    let handleSubmit = () => {
+    let handleSubmit =async () => {
         console.log(email, password);
         try {
-             api.post("/users/save/user", {
-                email: email,
-                password: password
-            }).then((res: { data: any }) => {
-                alert(res.data);
-            }).catch((error: any) => {
-                console.error(error)
-            })
-        } catch (e) {
-            console.error(e)
-        }
+            let data= await api.post("/users/save/user",{
+                email:email,
+                password:password
+            }).then((res)=>{
 
+            }).catch((error:any)=>{
+                console.error(error);
+            })
+            alert(data);
+            navigate("/");
+        }catch (error) {
+            console.error(error);
+        }
     };
     return (
         <section className="w-[100%] h-[100vh] flex flex-col items-center justify-center bg-gray-100">
@@ -59,14 +60,14 @@ export function Signup() {
                         value={password}
                         onChange={handlePasswordChange}
                     />
-                    <Link to="/" className="w-[100%] sm:w-[80%] h-[52px]">
+                    {/*<Link to="/" className="w-[100%] sm:w-[80%] h-[52px]">*/}
                         <Button
-                            className="w-[100%] h-[52px] text-3xl"
+                            className="w-[100%] sm:w-[80%] h-[52px] text-3xl"
                             variant="contained"
                             color="info"
                             onClick={handleSubmit}
                         >Sign Up</Button>
-                    </Link>
+                    {/*</Link>*/}
 
                 </form>
                 <p className="text-center mt-3">Do you already have an account?
