@@ -2,10 +2,9 @@ import {TextField} from "@mui/material";
 import React, {useState} from "react";
 import Button from "@mui/material/Button";
 import {Link,useNavigate} from "react-router-dom";
-import axios from "axios";
+import {api} from "../../config/config";
 
 export function Signup() {
-    let api=axios.create({baseURL:"https://localhost:4000"});
     let navigate = useNavigate();
 
     let [email, setEmail] = useState('');
