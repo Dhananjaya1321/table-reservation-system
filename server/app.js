@@ -4,10 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
+var DBConnection = require('./db/DB');
+
+DBConnection().then(r => console.log(r))
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
+const {log} = require("debug");
 
 var app = express();
 

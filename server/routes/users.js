@@ -6,6 +6,7 @@ router.post("/save/user",function (req, res) {
     let email = req.body.email;
     let password = req.body.password;
     let role = "user";
+
     console.log(email,password);
     res.send("Account successfully created");
 })
