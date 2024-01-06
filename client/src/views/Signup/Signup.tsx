@@ -20,14 +20,16 @@ export function Signup() {
         try {
             let data = await api.post("/users/save/user", {
                 email: email,
-                password: password
+                password: password,
+                role:"user"
             }).then((res) => {
-
-                navigate("/");
+                console.log(res.data.email);
+                if (res.status==200){
+                    navigate("/");
+                }
             }).catch((error: any) => {
                 console.error(error);
             })
-            // alert(data);
         } catch (error) {
             console.error(error);
         }

@@ -1,15 +1,9 @@
 var express = require('express');
+var UserController = require('../controller/UserController');
 var router = express.Router();
 
 /*============================== save user ==============================*/
-router.post("/save/user",function (req, res) {
-    let email = req.body.email;
-    let password = req.body.password;
-    let role = "user";
-
-    console.log(email,password);
-    res.send("Account successfully created");
-})
+router.post("/save/user",UserController.addUser)
 
 /*============================== get user count ==============================*/
 router.get("/user/count",function (req, res) {
