@@ -21,6 +21,10 @@ const BookingSchema = mongoose.Schema(
         "contact": {
             type: String,
             required: true
+        },
+        "online_or_not": {
+            type: String,
+            required: true
         }
     }
 );
