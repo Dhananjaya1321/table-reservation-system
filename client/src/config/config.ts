@@ -1,3 +1,3 @@
 import axios from "axios";
 
-export let api=axios.create({baseURL:"https://localhost:4000"});
+export let api=axios.create({baseURL:"http://localhost:4000"});

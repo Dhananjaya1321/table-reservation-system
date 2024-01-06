@@ -1,7 +1,7 @@
 import {TextField} from "@mui/material";
 import React, {useState} from "react";
 import Button from "@mui/material/Button";
-import {Link,useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {api} from "../../config/config";
 
 export function Signup() {
@@ -16,20 +16,19 @@ export function Signup() {
     let handlePasswordChange = (event: any) => {
         setPassword(event.target.value);
     };
-    let handleSubmit =async () => {
-        console.log(email, password);
+    let handleSubmit = async () => {
         try {
-            let data= await api.post("/users/save/user",{
-                email:email,
-                password:password
-            }).then((res)=>{
+            let data = await api.post("/users/save/user", {
+                email: email,
+                password: password
+            }).then((res) => {
 
-            }).catch((error:any)=>{
+                navigate("/");
+            }).catch((error: any) => {
                 console.error(error);
             })
-            alert(data);
-            navigate("/");
-        }catch (error) {
+            // alert(data);
+        } catch (error) {
             console.error(error);
         }
     };
@@ -60,12 +59,12 @@ export function Signup() {
                         onChange={handlePasswordChange}
                     />
                     {/*<Link to="/" className="w-[100%] sm:w-[80%] h-[52px]">*/}
-                        <Button
-                            className="w-[100%] sm:w-[80%] h-[52px] text-3xl"
-                            variant="contained"
-                            color="info"
-                            onClick={handleSubmit}
-                        >Sign Up</Button>
+                    <Button
+                        className="w-[100%] sm:w-[80%] h-[52px] text-3xl"
+                        variant="contained"
+                        color="info"
+                        onClick={handleSubmit}
+                    >Sign Up</Button>
                     {/*</Link>*/}
 
                 </form>

@@ -6,7 +6,7 @@ router.post("/save/user",function (req, res) {
     let email = req.body.email;
     let password = req.body.password;
     let role = "user";
-
+    console.log(email,password);
     res.send("Account successfully created");
 })
 
@@ -16,8 +16,9 @@ router.get("/user/count",function (req, res) {
 })
 
 /*============================== search user ==============================*/
-router.get("/search/user",function (req, res) {
-    res.send("search user ");
+router.get("/search/user",function (req, res,next) {
+    console.log("okok")
+    res.send();
 })
 
 module.exports = router;
