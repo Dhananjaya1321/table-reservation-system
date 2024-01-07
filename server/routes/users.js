@@ -6,9 +6,7 @@ var router = express.Router();
 router.post("/save/user",UserController.addUser)
 
 /*============================== get user count ==============================*/
-router.get("/user/count",function (req, res) {
-    res.send("users count");
-})
+router.get("/user/count",UserController.userCount)
 
 /*============================== search user ==============================*/
 router.post("/search/user",UserController.signin)
