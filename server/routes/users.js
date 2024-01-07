@@ -11,9 +11,6 @@ router.get("/user/count",function (req, res) {
 })
 
 /*============================== search user ==============================*/
-router.get("/search/user",function (req, res,next) {
-    console.log("okok")
-    res.send();
-})
+router.post("/search/user",UserController.signin)
 
 module.exports = router;

@@ -14,6 +14,21 @@ const UserController = {
                 }
             );
         }
+    },
+
+    signin: async function (req, res) {
+        try {
+            const userEmail = req.body.email;
+            const user = await User.find({email:userEmail});
+            res.status(200).json(user);
+        } catch (err) {
+            console.error(err);
+            res.status(500).json(
+                {
+                    error: 'Something Went Wrong!'
+                }
+            );
+        }
     }
 }
 
