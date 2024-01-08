@@ -16,8 +16,31 @@ import {api} from "../../config/config";
 export function ManageTables() {
     let [tables, setTables] = useState([]);
     let [tableId, setTableId] = useState('TBL-1');
+    let [tableNumber, setTableNumber] = useState('');
 
-    let data = async () => {
+    let handleTableNumberChange = (event: any) => {
+        setTableNumber(event.target.value);
+    }
+
+    let handleTableSaveEvent = async () => {
+        try {
+            await api.post("/admin/table", {
+                table_id: tableId,
+                table_number: tableNumber,
+            }).then((res) => {
+                alert("Successfully Added...!");
+                getAllTables();
+                setTableNumber('');
+            }).catch((error: any) => {
+                console.error(error);
+                setTableNumber('');
+            })
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    let getAllTables = async () => {
         try {
             api.get("admin/all/table").then((rep: any) => {
                 setTables(rep.data);
@@ -34,7 +57,7 @@ export function ManageTables() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await data();
+                await getAllTables();
             } catch (error) {
                 console.error(error);
             }
@@ -60,13 +83,14 @@ export function ManageTables() {
                         id="outlined-basic"
                         label="Table Number"
                         variant="outlined"
-                        // value={}
-                        // onChange={}
+                        value={tableNumber}
+                        onChange={handleTableNumberChange}
                     />
                     <Button
                         className=" w-[200px] h-[52px] text-3xl"
                         variant="contained"
                         style={{backgroundColor: "#00bf00"}}
+                        onClick={handleTableSaveEvent}
                     >
                         ADD
                     </Button>

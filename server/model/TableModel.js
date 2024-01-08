@@ -39,9 +39,10 @@ const TableModel = mongoose.Schema(
         },
         "table_number": {
             require: true,
-            type: Number,
+            type: String,
         },
         "booking": {
+            require: false,
             type: [BookingSchema]
         }
     }
