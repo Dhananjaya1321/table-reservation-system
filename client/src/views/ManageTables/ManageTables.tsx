@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {IconButton, TextField} from "@mui/material";
 import Button from "@mui/material/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -11,12 +11,37 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {Form} from "../../component/Form/Form";
+import {api} from "../../config/config";
 
 export function ManageTables() {
+    let [tables, setTables] = useState(0);
+    let data = async () => {
+        try {
+            api.get("admin/all/table").then((rep: any) => {
+                setTables(rep.data);
+                console.log(tables,rep.data.length)
+            }).catch((error: any) => {
+                console.error(error);
+            })
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                await data();
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+    }, []);
     return (
         <section className="absolute left-[50px] right-0 flex flex-col justify-center items-center h-max gap-[25px]">
-            <Form classes={"w-[90%] mt-5 flex justify-center items-center flex-wrap flex-row gap-[25px] p-[20px] rounded-2xl drop-shadow-md bg-white"}>
+            <Form
+                classes={"w-[90%] mt-5 flex justify-center items-center flex-wrap flex-row gap-[25px] p-[20px] rounded-2xl drop-shadow-md bg-white"}>
                 <>
                     <TextField
                         className="w-[200px]"
@@ -60,7 +85,7 @@ export function ManageTables() {
                                 <TableCell align="right">calories</TableCell>
                                 <TableCell align="right">
                                     <IconButton aria-label="delete">
-                                        <FontAwesomeIcon icon={faCircleMinus} style={{color:"red"}}/>
+                                        <FontAwesomeIcon icon={faCircleMinus} style={{color: "red"}}/>
                                     </IconButton>
                                 </TableCell>
                             </TableRow>
