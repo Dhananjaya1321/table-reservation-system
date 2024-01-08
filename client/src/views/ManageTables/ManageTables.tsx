@@ -44,7 +44,7 @@ export function ManageTables() {
         try {
             api.get("admin/all/table").then((rep: any) => {
                 setTables(rep.data);
-                console.log(rep.data.length);
+                console.log(rep.data.length,rep.data);
                 setTableId('TBL-' + (rep.data.length + 1));
             }).catch((error: any) => {
                 console.error(error);
@@ -64,6 +64,7 @@ export function ManageTables() {
         };
         fetchData();
     }, []);
+
 
     return (
         <section className="absolute left-[50px] right-0 flex flex-col justify-center items-center h-max gap-[25px]">
@@ -107,15 +108,20 @@ export function ManageTables() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell component="th" scope="row">TBL-001</TableCell>
-                                <TableCell align="right">calories</TableCell>
-                                <TableCell align="right">
-                                    <IconButton aria-label="delete">
-                                        <FontAwesomeIcon icon={faCircleMinus} style={{color: "red"}}/>
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>
+                            {
+                                tables.map((table:any) => (
+                                        <TableRow>
+                                            <TableCell component="th" scope="row">{table.table_id}</TableCell>
+                                            <TableCell align="right">{table.table_number}</TableCell>
+                                            <TableCell align="right">
+                                                <IconButton aria-label="delete">
+                                                    <FontAwesomeIcon icon={faCircleMinus} style={{color: "red"}}/>
+                                                </IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                )
+                            }
                         </TableBody>
                     </Table>
                 </TableContainer>
