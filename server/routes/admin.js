@@ -1,4 +1,5 @@
 let express = require("express");
+let TableController = require("../controller/TableController");
 let router = express.Router();
 
 /*================================= tables ==================================*/
@@ -9,9 +10,7 @@ router.post('/table',function (req, res) {
     res.send(`ok`);
 });
 
-router.get('/all/table',function (req, res) {
-    res.send(`all tables`);
-});
+router.get('/all/table',TableController.getAllTables);
 
 /*================================= booking ==================================*/
 router.post('/booking',function (req, res) {

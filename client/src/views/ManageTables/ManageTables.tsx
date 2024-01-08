@@ -13,6 +13,7 @@ import Paper from '@mui/material/Paper';
 import {Form} from "../../component/Form/Form";
 
 export function ManageTables() {
+
     return (
         <section className="absolute left-[50px] right-0 flex flex-col justify-center items-center h-max gap-[25px]">
             <Form classes={"w-[90%] mt-5 flex justify-center items-center flex-wrap flex-row gap-[25px] p-[20px] rounded-2xl drop-shadow-md bg-white"}>
@@ -23,12 +24,16 @@ export function ManageTables() {
                         id="outlined-disabled"
                         label="Table ID"
                         defaultValue="1"
+                        // value={}
+                        // onChange={}
                     />
                     <TextField
                         className="w-[200px]"
                         id="outlined-basic"
                         label="Table Number"
                         variant="outlined"
+                        // value={}
+                        // onChange={}
                     />
                     <Button
                         className=" w-[200px] h-[52px] text-3xl"
