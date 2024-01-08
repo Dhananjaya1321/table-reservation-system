@@ -14,12 +14,15 @@ import {Form} from "../../component/Form/Form";
 import {api} from "../../config/config";
 
 export function ManageTables() {
-    let [tables, setTables] = useState(0);
+    let [tables, setTables] = useState([]);
+    let [tableId, setTableId] = useState('TBL-1');
+
     let data = async () => {
         try {
             api.get("admin/all/table").then((rep: any) => {
                 setTables(rep.data);
-                console.log(tables,rep.data.length)
+                console.log(rep.data.length);
+                setTableId('TBL-' + (rep.data.length + 1));
             }).catch((error: any) => {
                 console.error(error);
             })
@@ -38,6 +41,7 @@ export function ManageTables() {
         };
         fetchData();
     }, []);
+
     return (
         <section className="absolute left-[50px] right-0 flex flex-col justify-center items-center h-max gap-[25px]">
             <Form
@@ -48,8 +52,7 @@ export function ManageTables() {
                         disabled
                         id="outlined-disabled"
                         label="Table ID"
-                        defaultValue="1"
-                        // value={}
+                        value={tableId}
                         // onChange={}
                     />
                     <TextField
