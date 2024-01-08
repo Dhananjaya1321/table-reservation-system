@@ -19,19 +19,26 @@ export function SignIn() {
 
     let handleSubmit =async () => {
         try {
-            api.get("/users/search/user",).then((res: { data: any }) => {
-                const jsonData = res.data;
-                alert(jsonData);
-                navigate("/admin/dashboard");
-
-                // alert(jsonData);
-
-                // this.setState({data: jsonData});
+            api.post("/users/search/user",{
+                email:email
+            }).then((res) => {
+                if (res.status==200 && res.data.length==1){
+                    if (password==res.data[0].password){
+                        let path=(res.data[0].role=='user')?"/":"/admin/dashboard";
+                        navigate(path);
+                    }else {
+                        /*Invalid Email or Password*/
+                        setEmail('');
+                        setPassword('');
+                    }
+                }else {
+                    /*do have an account*/
+                    setEmail('');
+                    setPassword('');
+                }
             }).catch((error:any)=>{
                 console.error(error);
             });
-            // alert(data);
-            // navigate("/");
         }catch (error) {
             console.error(error);
         }

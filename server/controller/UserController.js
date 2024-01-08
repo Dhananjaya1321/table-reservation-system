@@ -31,10 +31,9 @@ const UserController = {
         }
     },
 
-    userCount:async function(req,res){
+    getUserCount:async function(req, res){
         try{
-            const userCount = User.countDocuments({});
-            console.log(userCount);
+            res.status(200).json(await User.find());
         }catch (error) {
             console.error(error);
             res.status(500).json(
