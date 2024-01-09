@@ -3,26 +3,28 @@ let TableController = require("../controller/TableController");
 let router = express.Router();
 
 /*================================= tables ==================================*/
-router.post('/table',TableController.saveTable);
+router.post('/table', TableController.saveTable);
 
-router.get('/all/table',TableController.getAllTables);
+router.get('/all/table', TableController.getAllTables);
+
+router.delete(`/delete/table/:table_id`, TableController.deleteTable);
 
 /*================================= booking ==================================*/
-router.post('/booking',function (req, res) {
+router.post('/booking', function (req, res) {
     res.send(`save booking`);
 });
 
-router.put('/booking',function (req, res) {
+router.put('/booking', function (req, res) {
     res.send(`update booking`);
 });
 
-router.delete('/booking',function (req, res) {
+router.delete('/booking', function (req, res) {
     res.send(`delete booking`);
 });
 
-router.get('/new/booking',function (req, res) {
+router.get('/new/booking', function (req, res) {
     res.send(`new booking`);
 });
 
 
-module.exports=router
+module.exports = router
