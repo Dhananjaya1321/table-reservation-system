@@ -22,6 +22,20 @@ export function ManageTables() {
         setTableNumber(event.target.value);
     }
 
+    let handleTableDeleteEvent = async (tableId: string) => {
+        console.log(`Deleting table with ID: ${tableId}`);
+        try {
+            await api.delete(`/admin/delete/table/${tableId}`).then(() => {
+                alert("Successfully Deleted...!");
+                getAllTables();
+            }).catch((error) => {
+                console.error(error);
+            })
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     let handleTableSaveEvent = async () => {
         try {
             await api.post("/admin/table", {
@@ -44,8 +58,13 @@ export function ManageTables() {
         try {
             api.get("admin/all/table").then((rep: any) => {
                 setTables(rep.data);
-                console.log(rep.data.length,rep.data);
-                setTableId('TBL-' + (rep.data.length + 1));
+                let nextId=Number(rep.data[rep.data.length-1].table_id.slice(4))+1;
+                console.log(rep.data.length,`TBL-${nextId}`);
+                if (rep.data.length>0){
+                    setTableId(`TBL-${nextId}`);
+                }else {
+                    setTableId('TBL-1');
+                }
             }).catch((error: any) => {
                 console.error(error);
             })
@@ -109,12 +128,15 @@ export function ManageTables() {
                         </TableHead>
                         <TableBody>
                             {
-                                tables.map((table:any) => (
+                                tables.map((table: any) => (
                                         <TableRow>
                                             <TableCell component="th" scope="row">{table.table_id}</TableCell>
                                             <TableCell align="right">{table.table_number}</TableCell>
                                             <TableCell align="right">
-                                                <IconButton aria-label="delete">
+                                                <IconButton
+                                                    aria-label="delete"
+                                                    onClick={() => handleTableDeleteEvent(table.table_id)}
+                                                >
                                                     <FontAwesomeIcon icon={faCircleMinus} style={{color: "red"}}/>
                                                 </IconButton>
                                             </TableCell>
