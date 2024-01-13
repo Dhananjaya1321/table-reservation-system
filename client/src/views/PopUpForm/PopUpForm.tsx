@@ -11,7 +11,7 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
     let [currentDate, setCurrentDate] = useState('');
     let [currentTime, setCurrentTime] = useState('');
     let [peopleCount, setPeopleCount] = useState(2);
-    let [tableId, settableId] = useState(table_id);
+    let [tableId, setTableId] = useState(table_id);
     let [name, setName] = useState('');
     let [nic, setNIC] = useState('');
     let [contactNumber, setContactNumber] = useState('');
