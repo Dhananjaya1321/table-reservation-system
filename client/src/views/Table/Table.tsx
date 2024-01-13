@@ -3,6 +3,11 @@ import {PopUpForm} from "../PopUpForm/PopUpForm";
 
 export function Table({table_id, table_number, chair_count, status}: Props) {
     const [isPopupOpen, setPopupOpen] = useState(false);
+    const [disabled, setDisabled] = useState(false);
+
+    useEffect(() => {
+        setDisabled(status === "reserved");
+    }, [status]);
 
     let handleOpenPopup = () => {
         setPopupOpen(true);
@@ -32,13 +37,24 @@ export function Table({table_id, table_number, chair_count, status}: Props) {
                 <h1 className="text-[32px]">{table_number}</h1>
             </div>
             <div
-                id={table_id}/*hover:bg-black */
+                id={table_id}
                 className="text-3xl flex-col opacity-0 hover:opacity-100 hover:drop-shadow-md absolute
                 w-[150px] h-[150px] rounded-[20px] flex justify-center text-center items-center z-30
                 top-0 left-0 right-0 bottom-0 m-auto">
-                <button onClick={handleOpenPopup} className="w-[100px] h-[40px] bg-amber-400 text-xl rounded-[5px]">VIEW</button>
+                <button
+                    onClick={handleOpenPopup}
+                    className="w-[100px] h-[40px] bg-amber-400 text-xl rounded-[5px]"
+                    disabled={disabled}
+                >
+                    VIEW
+                </button>
             </div>
-            <PopUpForm isPopupOpen={isPopupOpen} isOpen={handleOpenPopup} isClose={handleClosePopup} table_id={table_id}/>
+            <PopUpForm
+                isPopupOpen={isPopupOpen}
+                isOpen={handleOpenPopup}
+                isClose={handleClosePopup}
+                table_id={table_id}
+            />
         </div>
     );
 }
