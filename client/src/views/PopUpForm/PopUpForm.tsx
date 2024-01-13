@@ -9,6 +9,11 @@ import {Form} from "../../component/Form/Form";
 export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
     let [currentDate, setCurrentDate] = useState('');
     let [currentTime, setCurrentTime] = useState('');
+    let [peopleCount, setPeopleCount] = useState(2);
+    let [tableId, settableId] = useState(table_id);
+    let [name, setName] = useState('');
+    let [nic, setNIC] = useState('');
+    let [contactNumber, setContactNumber] = useState('');
 
     const handleDateChange = (event: any) => {
         setCurrentDate(event.target.value);
@@ -16,6 +21,22 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
 
     const handleTimeChange = (event: any) => {
         setCurrentTime(event.target.value);
+    };
+
+    const handlePeopleCountChange = (event: any) => {
+        setPeopleCount(event.target.value);
+    };
+
+    const handleNameChange = (event: any) => {
+        setName(event.target.value);
+    };
+
+    const handleNICChange = (event: any) => {
+        setNIC(event.target.value);
+    };
+
+    const handleContactNumberChange = (event: any) => {
+        setContactNumber(event.target.value);
     };
 
     useEffect(() => {
@@ -47,7 +68,7 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
                             disabled
                             id="outlined-disabled"
                             label="Table Number"
-                            defaultValue="1"
+                            defaultValue={tableId}
                         />
                         <TextField
                             className="w-[100px] sm:w-[200px]"
@@ -57,6 +78,8 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
                             InputLabelProps={{
                                 shrink: true,
                             }}
+                            value={peopleCount}
+                            onChange={handlePeopleCountChange}
                         />
                         <input
                             className="w-[100px] sm:w-[200px] py-[12px] px-[5px]  rounded border border-solid border-[#0000004a]"
@@ -76,18 +99,24 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
                             id="outlined-basic"
                             label="Name"
                             variant="outlined"
+                            value={name}
+                            onChange={handleNameChange}
                         />
                         <TextField
                             className="w-[100px] sm:w-[200px]"
                             id="outlined-basic"
                             label="NIC"
                             variant="outlined"
+                            value={nic}
+                            onChange={handleNICChange}
                         />
                         <TextField
                             className="w-[100px] sm:w-[200px]"
                             id="outlined-basic"
                             label="Contact Number"
                             variant="outlined"
+                            value={contactNumber}
+                            onChange={handleContactNumberChange}
                         />
                         <Button
                             className="w-[100px] sm:w-[200px] h-[52px] text-3xl"
