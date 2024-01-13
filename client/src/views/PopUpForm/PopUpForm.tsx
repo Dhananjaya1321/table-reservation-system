@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {Form} from "../../component/Form/Form";
+import {api} from "../../config/config";
 
 
 export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
@@ -38,6 +39,23 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
     const handleContactNumberChange = (event: any) => {
         setContactNumber(event.target.value);
     };
+
+    const handleBookingEvent=(event:any)=>{
+        api.post("/admin/booking",{
+            table_id:tableId,
+            date:currentDate,
+            time:currentTime,
+            name:name,
+            nic:nic,
+            contact:contactNumber,
+            online_or_not:"online",
+        }).then((rep:any)=>{
+            console.log("ok");
+            alert("Successfully Added...!")
+        }).catch((error)=>{
+            console.log(error);
+        })
+    }
 
     useEffect(() => {
         const currentDateObject = new Date();
@@ -122,6 +140,7 @@ export function PopUpForm({isPopupOpen, isOpen, isClose, table_id}: Props) {
                             className="w-[100px] sm:w-[200px] h-[52px] text-3xl"
                             variant="contained"
                             color="success"
+                            onClick={handleBookingEvent}
                         >
                             BOOK NOW
                         </Button>

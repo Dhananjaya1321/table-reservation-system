@@ -41,6 +41,35 @@ const TableController = {
                 error: "Something Went Wrong!"
             });
         }
+    },
+
+
+    saveBooking:async function (req, res) {
+        try {
+            const { table_id, date, time, name, nic, contact, online_or_not } = req.body;
+
+            const newBooking = {
+                date: new Date(date),
+                time: time,
+                name: name,
+                nic: nic,
+                contact: contact,
+                online_or_not: online_or_not,
+            };
+            console.log(newBooking)
+            const result = await Table.updateOne(
+                { table_id: table_id },
+                { $push: { booking: newBooking } }
+            );
+
+            console.log("Booking added successfully:", result);
+            res.status(200).json(newBooking);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({
+                error: "Something Went Wrong!"
+            });
+        }
     }
 }
 

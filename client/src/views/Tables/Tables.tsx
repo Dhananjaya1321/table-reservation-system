@@ -28,6 +28,8 @@ export function Tables() {
         try {
             api.get("admin/all/table").then((rep: any) => {
                 setTables(rep.data);
+                console.log(tables,rep.data)
+
             }).catch((error: any) => {
                 console.error(error);
             })

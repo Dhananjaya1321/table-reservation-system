@@ -10,9 +10,7 @@ router.get('/all/table', TableController.getAllTables);
 router.delete(`/delete/table/:table_id`, TableController.deleteTable);
 
 /*================================= booking ==================================*/
-router.post('/booking', function (req, res) {
-    res.send(`save booking`);
-});
+router.post('/booking', TableController.saveBooking);
 
 router.put('/booking', function (req, res) {
     res.send(`update booking`);
