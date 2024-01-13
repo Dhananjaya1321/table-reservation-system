@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {PopUpForm} from "../PopUpForm/PopUpForm";
 
 export function Table({table_id, table_number, chair_count, status}: Props) {
     const [isPopupOpen, setPopupOpen] = useState(false);
+
     let handleOpenPopup = () => {
         setPopupOpen(true);
     };
@@ -37,7 +38,7 @@ export function Table({table_id, table_number, chair_count, status}: Props) {
                 top-0 left-0 right-0 bottom-0 m-auto">
                 <button onClick={handleOpenPopup} className="w-[100px] h-[40px] bg-amber-400 text-xl rounded-[5px]">VIEW</button>
             </div>
-            <PopUpForm isPopupOpen={isPopupOpen} isOpen={handleOpenPopup} isClose={handleClosePopup}/>
+            <PopUpForm isPopupOpen={isPopupOpen} isOpen={handleOpenPopup} isClose={handleClosePopup} table_id={table_id}/>
         </div>
     );
 }

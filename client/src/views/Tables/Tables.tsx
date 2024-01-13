@@ -9,6 +9,11 @@ export function Tables() {
     let [currentDate, setCurrentDate] = useState('');
     let [currentTime, setCurrentTime] = useState('');
 
+    // Event handler for search
+    const handleSearchEvent = (event:any) => {
+
+    };
+
     // Event handler for date input change
     const handleDateChange = (event:any) => {
         setCurrentDate(event.target.value);
@@ -66,7 +71,10 @@ export function Tables() {
                            value={currentTime}
                            onChange={handleTimeChange}
                     />
-                    <Button className="w-40 md:w-56 h-10 rounded px-1" variant="contained">Search</Button>
+                    <Button className="w-40 md:w-56 h-10 rounded px-1"
+                            variant="contained"
+                            onChange={handleSearchEvent}
+                    >Search</Button>
                 </div>
             </section>
             <section id="tables-section" className="w-full flex justify-center flex-col items-center">
