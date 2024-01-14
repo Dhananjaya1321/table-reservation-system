@@ -16,13 +16,6 @@ router.put('/booking', function (req, res) {
     res.send(`update booking`);
 });
 
-router.delete('/booking', function (req, res) {
-    res.send(`delete booking`);
-});
-
-router.get('/new/booking', function (req, res) {
-    res.send(`new booking`);
-});
-
+router.delete('/delete/booking', TableController.deleteBooking);
 
 module.exports = router

@@ -1,4 +1,5 @@
 const Table = require('../model/TableModel');
+const {log} = require("debug");
 
 const TableController = {
     getAllTables: async function (req, res) {
@@ -27,13 +28,13 @@ const TableController = {
 
     deleteTable: async function (req, res) {
         try {
-            console.log("s",req.params.table_id)
-            const result = await Table.deleteOne({ table_id: req.params.table_id });
+            console.log("s", req.params.table_id)
+            const result = await Table.deleteOne({table_id: req.params.table_id});
 
             if (result.deletedCount > 0) {
                 res.status(204).send();
             } else {
-                res.status(404).json({ error: "Table not found" });
+                res.status(404).json({error: "Table not found"});
             }
         } catch (error) {
             console.error(error);
@@ -44,9 +45,9 @@ const TableController = {
     },
 
 
-    saveBooking:async function (req, res) {
+    saveBooking: async function (req, res) {
         try {
-            const { table_id, date, time, name, nic, contact, online_or_not } = req.body;
+            const {table_id, date, time, name, nic, contact, online_or_not} = req.body;
 
             const newBooking = {
                 date: new Date(date),
@@ -58,12 +59,43 @@ const TableController = {
             };
             console.log(newBooking)
             const result = await Table.updateOne(
-                { table_id: table_id },
-                { $push: { booking: newBooking } }
+                {table_id: table_id},
+                {$push: {booking: newBooking}}
             );
 
             console.log("Booking added successfully:", result);
             res.status(200).json(newBooking);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({
+                error: "Something Went Wrong!"
+            });
+        }
+    },
+
+    deleteBooking: async function (req, res) {
+        try {
+            const { tableId, date, time, nic } = req.body;
+
+            await Table.findOneAndUpdate(
+                {
+                    "table_id": tableId,
+                    "booking.date": date,
+                    "booking.time": time,
+                    "booking.nic": nic
+                },
+                {
+                    $pull: {
+                        booking: {
+                            date: date,
+                            time: time,
+                            nic: nic
+                        }
+                    }
+                },
+                { new: true }
+            );
+            res.status(200).json({ success: true });
         } catch (error) {
             console.error(error);
             res.status(500).json({

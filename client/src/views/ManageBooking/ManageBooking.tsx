@@ -81,6 +81,26 @@ export function ManageBooking() {
         })
     }
 
+    const handleDeleteBooking = async (tableId: string, date: string, time: string, nic: string) => {
+        try {
+            const response = await api.delete("/admin/delete/booking", {
+                data: {
+                    tableId: tableId,
+                    date: date,
+                    time: time,
+                    nic: nic,
+                },
+            });
+            if (response.status === 200) {
+                alert("Delete is successfully...!");
+            } else {
+                console.error("Failed to delete booking");
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -102,7 +122,8 @@ export function ManageBooking() {
     return (
         <section className="absolute left-[50px] right-0 flex flex-col justify-center items-center h-max gap-[25px]">
             <div className="h-full flex justify-center items-center ">
-                <Form classes={"w-[90%] flex justify-center items-center flex-wrap mt-5 gap-5 drop-shadow-md bg-white rounded-2xl p-4"}>
+                <Form
+                    classes={"w-[90%] flex justify-center items-center flex-wrap mt-5 gap-5 drop-shadow-md bg-white rounded-2xl p-4"}>
                     <>
                         <Select
                             className="w-[200px]"
@@ -116,7 +137,7 @@ export function ManageBooking() {
                                 <em>Table Number</em>
                             </MenuItem>
                             {
-                                tables.map((table:any)=>(
+                                tables.map((table: any) => (
                                     <MenuItem value={table.table_id}>{table.table_number}</MenuItem>
                                 ))
                             }
@@ -197,19 +218,28 @@ export function ManageBooking() {
                         </TableHead>
                         <TableBody>
                             {
-                                tables.map((table:any,tableIndex:number)=>(
-                                table.booking.map((booking:any,bookingIndex:number)=>(
+                                tables.map((table: any, tableIndex: number) => (
+                                    table.booking.map((booking: any, bookingIndex: number) => (
                                         //  console.log(tableIndex+"."+bookingIndex)
-                                        <TableRow key={tableIndex+"."+bookingIndex}>
-                                            <TableCell align="left" component="th" scope="row">{table.table_number}</TableCell>
-                                            <TableCell align="left" component="th" scope="row">{booking.date}</TableCell>
-                                            <TableCell align="left" component="th" scope="row">{booking.time}</TableCell>
-                                            <TableCell align="left" component="th" scope="row">{booking.name}</TableCell>
+                                        <TableRow key={tableIndex + "." + bookingIndex}>
+                                            <TableCell align="left" component="th"
+                                                       scope="row">{table.table_number}</TableCell>
+                                            <TableCell align="left" component="th"
+                                                       scope="row">{booking.date}</TableCell>
+                                            <TableCell align="left" component="th"
+                                                       scope="row">{booking.time}</TableCell>
+                                            <TableCell align="left" component="th"
+                                                       scope="row">{booking.name}</TableCell>
                                             <TableCell align="left" component="th" scope="row">{booking.nic}</TableCell>
-                                            <TableCell align="left" component="th" scope="row">{booking.contact}</TableCell>
-                                            <TableCell align="left" component="th" scope="row">{booking.online_or_not}</TableCell>
+                                            <TableCell align="left" component="th"
+                                                       scope="row">{booking.contact}</TableCell>
+                                            <TableCell align="left" component="th"
+                                                       scope="row">{booking.online_or_not}</TableCell>
                                             <TableCell align="left" style={{display: "flex"}}>
-                                                <IconButton aria-label="delete">
+                                                <IconButton
+                                                    aria-label="delete"
+                                                    onClick={() => handleDeleteBooking(table.table_id, booking.date, booking.time, booking.nic)}
+                                                >
                                                     <FontAwesomeIcon icon={faTrash} style={{color: "red"}}/>
                                                 </IconButton>
                                                 <IconButton aria-label="delete">
