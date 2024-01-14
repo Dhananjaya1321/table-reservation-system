@@ -185,7 +185,6 @@ export function ManageBooking() {
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="left">Booking ID</TableCell>
                                 <TableCell align="left">Table number</TableCell>
                                 <TableCell align="left">Date</TableCell>
                                 <TableCell align="left">Time</TableCell>
@@ -197,24 +196,29 @@ export function ManageBooking() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell align="left" component="th" scope="row">BOK-001</TableCell>
-                                <TableCell align="left" component="th" scope="row">001</TableCell>
-                                <TableCell align="left" component="th" scope="row">12/30/2023</TableCell>
-                                <TableCell align="left" component="th" scope="row">12:30 P.M.</TableCell>
-                                <TableCell align="left" component="th" scope="row">Isuru</TableCell>
-                                <TableCell align="left" component="th" scope="row">1111111111</TableCell>
-                                <TableCell align="left" component="th" scope="row">07654110779</TableCell>
-                                <TableCell align="left" component="th" scope="row">online</TableCell>
-                                <TableCell align="left" style={{display: "flex"}}>
-                                    <IconButton aria-label="delete">
-                                        <FontAwesomeIcon icon={faTrash} style={{color: "red"}}/>
-                                    </IconButton>
-                                    <IconButton aria-label="delete">
-                                        <FontAwesomeIcon icon={faPenToSquare} style={{color: "green"}}/>
-                                    </IconButton>
-                                </TableCell>
-                            </TableRow>
+                            {
+                                tables.map((table:any)=>(
+                                    table.booking.map((booking:any)=>(
+                                        <TableRow>
+                                            <TableCell align="left" component="th" scope="row">{table.table_number}</TableCell>
+                                            <TableCell align="left" component="th" scope="row">{booking.date}</TableCell>
+                                            <TableCell align="left" component="th" scope="row">{booking.time}</TableCell>
+                                            <TableCell align="left" component="th" scope="row">{booking.name}</TableCell>
+                                            <TableCell align="left" component="th" scope="row">{booking.nic}</TableCell>
+                                            <TableCell align="left" component="th" scope="row">{booking.contact}</TableCell>
+                                            <TableCell align="left" component="th" scope="row">{booking.online_or_not}</TableCell>
+                                            <TableCell align="left" style={{display: "flex"}}>
+                                                <IconButton aria-label="delete">
+                                                    <FontAwesomeIcon icon={faTrash} style={{color: "red"}}/>
+                                                </IconButton>
+                                                <IconButton aria-label="delete">
+                                                    <FontAwesomeIcon icon={faPenToSquare} style={{color: "green"}}/>
+                                                </IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                ))
+                            }
                         </TableBody>
                     </Table>
                 </TableContainer>
