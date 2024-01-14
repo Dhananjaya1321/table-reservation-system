@@ -197,9 +197,10 @@ export function ManageBooking() {
                         </TableHead>
                         <TableBody>
                             {
-                                tables.map((table:any)=>(
-                                    table.booking.map((booking:any)=>(
-                                        <TableRow>
+                                tables.map((table:any,tableIndex:number)=>(
+                                table.booking.map((booking:any,bookingIndex:number)=>(
+                                        //  console.log(tableIndex+"."+bookingIndex)
+                                        <TableRow key={tableIndex+"."+bookingIndex}>
                                             <TableCell align="left" component="th" scope="row">{table.table_number}</TableCell>
                                             <TableCell align="left" component="th" scope="row">{booking.date}</TableCell>
                                             <TableCell align="left" component="th" scope="row">{booking.time}</TableCell>

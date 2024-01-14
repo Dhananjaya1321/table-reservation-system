@@ -5,8 +5,10 @@ import {PieChart} from "@mui/x-charts";
 import {api} from "../../config/config";
 
 export function Dashboard() {
+    let [tables, setTables] = useState<any[]>([]);
     let [userCount, setUserCount] = useState(0);
-    let data = async () => {
+    let [tableCount, setTableCount] = useState(0);
+    let getAllUsers = async () => {
         try {
             api.get("users/count").then((rep: any) => {
                 setUserCount(rep.data.length);
@@ -19,10 +21,25 @@ export function Dashboard() {
         }
     };
 
+    let getAllTables = async () => {
+        try {
+            api.get("admin/all/table").then((rep: any) => {
+                setTables(rep.data);
+                setTableCount(rep.data.length);
+            }).catch((error: any) => {
+                console.error(error);
+            })
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await data();
+                await getAllUsers();
+                await getAllTables();
             } catch (error) {
                 console.error(error);
             }
@@ -30,10 +47,11 @@ export function Dashboard() {
         fetchData();
     }, []);
 
+
     return (
         <section className="top-0 absolute left-[50px] right-0 flex flex-col h-max ">
             <div className="mt-10 flex flex-row justify-center items-center flex-wrap gap-[25px] ">
-                <DashboardItem topic={"Table Count"} count={0}/>
+                <DashboardItem topic={"Table Count"} count={tableCount}/>
                 <DashboardItem topic={"Available Table"} count={0}/>
                 <DashboardItem topic={"Booked Table"} count={0}/>
                 <DashboardItem topic={"Customers Count"} count={userCount}/>
