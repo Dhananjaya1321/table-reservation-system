@@ -5,57 +5,63 @@ import {PieChart} from "@mui/x-charts";
 import {api} from "../../config/config";
 
 export function Dashboard() {
+    let [currentDate, setCurrentDate] = useState('');
     let [tables, setTables] = useState<any[]>([]);
     let [userCount, setUserCount] = useState(0);
     let [tableCount, setTableCount] = useState(0);
-    let getAllUsers = async () => {
-        try {
-            api.get("users/count").then((rep: any) => {
-                setUserCount(rep.data.length);
-                console.log(rep.data.length, userCount);
-            }).catch((error: any) => {
-                console.error(error);
-            })
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    let getAllTables = async () => {
-        try {
-            api.get("admin/all/table").then((rep: any) => {
-                setTables(rep.data);
-                setTableCount(rep.data.length);
-            }).catch((error: any) => {
-                console.error(error);
-            })
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
+    let [bookedTableCount, setBookedTableCount] = useState(0);
+    let [availableTableCount, setAvailableTableCount] = useState(0);
+    let [bookingCount, setbookingCount] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                await getAllUsers();
-                await getAllTables();
+                const usersResponse = await api.get("users/count");
+                setUserCount(usersResponse.data.length);
+
+                const tablesResponse = await api.get("admin/all/table");
+                setTables(tablesResponse.data);
+
+                setTableCount(tablesResponse.data.length);
+
+                let bookedCount = 0;
+                tablesResponse.data.forEach((table: any) => {
+                    if (table.booking && table.booking.length > 0) {
+                        for (let i in table.booking) {
+                            console.log(i)
+                            ++bookedCount;
+                            if (table.booking[i].date.slice(0, 10) === currentDate) {
+                                setBookedTableCount(++bookedTableCount);
+                                console.log(bookedTableCount)
+                                break;
+                            }
+                        }
+                    }
+                });
+                setAvailableTableCount(tableCount - bookedTableCount);
+                setbookingCount(bookedCount);
             } catch (error) {
                 console.error(error);
             }
         };
+
         fetchData();
-    }, []);
+
+        const currentDateObject = new Date();
+        const formattedDate = currentDateObject.toISOString().split('T')[0];
+        setCurrentDate(formattedDate);
+
+    }, [currentDate, tableCount]);
 
 
     return (
         <section className="top-0 absolute left-[50px] right-0 flex flex-col h-max ">
             <div className="mt-10 flex flex-row justify-center items-center flex-wrap gap-[25px] ">
                 <DashboardItem topic={"Table Count"} count={tableCount}/>
-                <DashboardItem topic={"Available Table"} count={0}/>
-                <DashboardItem topic={"Booked Table"} count={0}/>
+                <DashboardItem topic={"Available Table"} count={availableTableCount}/>
+                <DashboardItem topic={"Booked Table"} count={bookedTableCount}/>
                 <DashboardItem topic={"Customers Count"} count={userCount}/>
-                <DashboardItem topic={"Booking Count"} count={0}/>
+                <DashboardItem topic={"Booking Count"} count={bookingCount}/>
             </div>
             <div id="chart-div" className="flex flex-row flex-wrap items-center">
                 <LineChart
